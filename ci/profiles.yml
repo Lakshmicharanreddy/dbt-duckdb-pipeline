@@ -5,3 +5,4 @@ analytics:
       type: duckdb
       path: data/prod.duckdb
       threads: 4
+  

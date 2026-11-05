@@ -17,12 +17,12 @@ jobs:
       - name: Install dependencies
         run: uv sync
         
+      - name: Create Data Directory
+        run: mkdir -p analytics/data
+        
       - name: Download Data
         run: uv run python scripts/download_data.py
         
-      - name: Create Data Directory
-        run: mkdir -p analytics/data
-
       - name: Run dbt Build
         run: uv run dbt build --profiles-dir ../ci
         working-directory: analytics
