@@ -40,7 +40,7 @@ The pipeline uses tests to validate the data before completing each build.
 
 **dbt DAG:**
 
-[View dbt DAG diagram](https://github.com/Lakshmicharanreddy/dbt-duckdb-pipeline/blob/master/analytics/img/dag_pipeline.png)
+![View dbt DAG diagram](img/dag_pipeline.png)
 
 ### dbt Features Used
 
