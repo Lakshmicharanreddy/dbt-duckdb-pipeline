@@ -3,5 +3,5 @@ analytics:
   outputs:
     prod:
       type: duckdb
-      path: "{{ env_var('DB_PATH', 'data/prod.duckdb') }}"
+      path: ../data/prod.duckdb
       threads: 4
