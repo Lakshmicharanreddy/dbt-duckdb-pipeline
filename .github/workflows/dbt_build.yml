@@ -10,6 +10,8 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      DB_PATH: "/home/runner/work/dbt-duckdb-pipeline/dbt-duckdb-pipeline/analytics/data/prod.duckdb"
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v5
