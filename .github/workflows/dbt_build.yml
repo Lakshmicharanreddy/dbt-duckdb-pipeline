@@ -17,8 +17,10 @@ jobs:
       - name: Install dependencies
         run: uv sync
         
-      - name: Create Data Directory
-        run: mkdir -p data/raw
+      - name: Create All Possible Data Directories
+        run: |
+          mkdir -p data/raw
+          mkdir -p analytics/data
         
       - name: Download Raw Dataset
         run: uv run python scripts/download_data.py
@@ -30,6 +32,11 @@ jobs:
       - name: Upload Database to GitHub Release
         run: |
           gh release create warehouse --notes "Warehouse - auto-built by dbt" || true
-          gh release upload warehouse data/prod.duckdb --clobber
+          # Upload from whichever path the file landed in safely
+          if [ -f "analytics/data/prod.duckdb" ]; then
+            gh release upload warehouse analytics/data/prod.duckdb --clobber
+          elif [ -f "data/prod.duckdb" ]; then
+            gh release upload warehouse data/prod.duckdb --clobber
+          fi
         env:
           GH_TOKEN: ${{ github.token }}
