@@ -22,7 +22,7 @@ A public dbt + DuckDB pipeline over ~692k real job postings, rebuilt and republi
 | **dbt pipeline** | Sources → cleaned models → insight marts | [`analytics/`](https://github.com/Lakshmicharanreddy/dbt-duckdb-pipeline/tree/master/analytics) |
 | **Data tests** | `unique` / `not_null` on every mart grain | [`schema.yml`](https://github.com/Lakshmicharanreddy/dbt-duckdb-pipeline/blob/master/analytics/models/schema.yml) |
 | **dbt documentation** | Lineage, descriptions, and column tests | [`analytics/models/`](https://github.com/Lakshmicharanreddy/dbt-duckdb-pipeline/tree/master/analytics/models) |
-| **Public CI** | Build + test + publish on every push | [GitHub Actions](https://github.com/Lakshmicharanreddy/dbt-duckdb-pipeline/tree/master/.github/workflows) |
+| **Public CI** | Build + test + publish on every push | [GitHub Actions](https://github.com/Lakshmicharanreddy/dbt-duckdb-pipeline/actions) |
 | **Environments** | Local `dev` vs CI `prod` targets | [`ci/profiles.yml`](https://github.com/Lakshmicharanreddy/dbt-duckdb-pipeline/blob/master/ci/profiles.yml) |
 | **Published warehouse** | DuckDB database published through GitHub Releases | [Latest Release](https://github.com/Lakshmicharanreddy/dbt-duckdb-pipeline/releases) |
 
@@ -130,23 +130,15 @@ You can directly query the published analytical tables without downloading the d
 
 ## 📖 dbt Documentation
 
-The project uses dbt's documentation functionality to generate documentation for the data models.
+Documentation is generated using `dbt docs generate` and published to GitHub Pages.
 
-Generate documentation locally:
+💡 **[View Live Documentation](https://lakshmicharanreddy.github.io/dbt-duckdb-pipeline/)**
 
-```bash
-uv run dbt docs generate
-uv run dbt docs serve
-```
+The documentation site provides:
 
-The documentation provides:
-
-- **Data Lineage:** Visual representation of the data flow from sources to staging models and insight marts.
-- **Model Descriptions:** Documentation explaining the purpose of individual models.
-- **Column Descriptions:** Information about the columns in each model.
-- **Data Tests:** Visibility into the tests applied to models and their columns.
-
----
+- The full **lineage graph** (sources → models → marts).
+- **Model and column descriptions** from the YAML files.
+- Information about which columns carry **data tests**.
 
 ## 💻 Run the Project Locally
 
